@@ -27,7 +27,7 @@
           La zona horaria antes del cambio era {{ cambio_zona_horaria.diff.before.name }} y la hora era {{ hora_actual }}
           La zona horaria despues del cambio es {{ cambio_zona_horaria.diff.before.name }} y la hora es {{ hora_nueva }}
     
-    -name: "Vuelta atras"
+    - name: "Vuelta atras"
       timezone:
         name: {{ cambio_zona_horaria.diff.before.name }} 
 ...
