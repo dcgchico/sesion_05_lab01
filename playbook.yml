@@ -25,8 +25,8 @@
       lineinfile:
         path: "/tmp/datos_horarios_{{ ansible_facts['hostname'] }}"
         line: |
-          La zona horaria antes del cambio era {{ cambio_zona_horaria.diff.before.name }} y la hora era {{ hora_actual }}
-          La zona horaria despues del cambio es {{ cambio_zona_horaria.diff.after.name }} y la hora es {{ hora_nueva }}
+          La zona horaria antes del cambio era {{ cambio_zona_horaria.diff.before.name }} y la hora era {{ hora_actual.stdout_lines }}
+          La zona horaria despues del cambio es {{ cambio_zona_horaria.diff.after.name }} y la hora es {{ hora_nueva.stdout_lines }}
       when: ansible_facts['hostname'] == "nodo01"
     
     - name: "Vuelta atras"
