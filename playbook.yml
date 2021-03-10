@@ -1,6 +1,6 @@
 ---
 - name: "Laboratorio de Registros"
-  hosts: nodos
+  hosts: 172.17.149.120
   tasks:
     - name: "Consultar hora actual"
       command: "date +%T"
@@ -9,7 +9,6 @@
     - name: "Cambiar la zona horaria"
       timezone:
         name: "Europe/Moscow"
-      when: ansible_facts['hostname'] == "nodo01"
       register: cambio_zona_horaria
     
     - name: "Fichero de datos horarios"
@@ -27,10 +26,8 @@
         line: |
           La zona horaria antes del cambio era {{ cambio_zona_horaria.diff.before.name }} y la hora era {{ hora_actual.stdout_lines }}
           La zona horaria despues del cambio es {{ cambio_zona_horaria.diff.after.name }} y la hora es {{ hora_nueva.stdout_lines }}
-      when: ansible_facts['hostname'] == "nodo01"
-    
+
     - name: "Vuelta atras"
       timezone:
         name: "{{ cambio_zona_horaria.diff.before.name }}"
-      when: ansible_facts['hostname'] == "nodo01"
 ...
