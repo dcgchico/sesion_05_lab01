@@ -26,9 +26,11 @@
         path: "/tmp/datos_horarios_{{ ansible_facts['hostname'] }}"
         line: |
           La zona horaria antes del cambio era {{ cambio_zona_horaria.diff.before.name }} y la hora era {{ hora_actual }}
-          La zona horaria despues del cambio es {{ cambio_zona_horaria.diff.before.name }} y la hora es {{ hora_nueva }}
+          La zona horaria despues del cambio es {{ cambio_zona_horaria.diff.after.name }} y la hora es {{ hora_nueva }}
+      when: ansible_facts['hostname'] == "nodo_01"
     
     - name: "Vuelta atras"
       timezone:
         name: "{{ cambio_zona_horaria.diff.before.name }}"
+      when: ansible_facts['hostname'] == "nodo_01"
 ...
