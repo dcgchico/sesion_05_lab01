@@ -9,6 +9,7 @@
     - name: "Cambiar la zona horaria"
       timezone:
         name: "Europe/Moscow"
+      when: ansible_facts['hostname'] == "nodo_01"
       register: cambio_zona_horaria
     
     - name: "Fichero de datos horarios"
