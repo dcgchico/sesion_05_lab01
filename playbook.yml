@@ -29,5 +29,5 @@
     
     - name: "Vuelta atras"
       timezone:
-        name: {{ cambio_zona_horaria.diff.before.name }} 
+        name: "{{ cambio_zona_horaria.diff.before.name }}"
 ...
