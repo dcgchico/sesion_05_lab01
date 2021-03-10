@@ -14,7 +14,7 @@
     - name: "Fichero de datos horarios"
       file:
         path: "/tmp/datos_horarios_{{ ansible_facts['hostname'] }}"
-        state:touch
+        state: touch
 
     - name: "Consultar nueva hora"
       command: "date +%T"
